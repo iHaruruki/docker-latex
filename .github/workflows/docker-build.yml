@@ -1,0 +1,50 @@
+name: build and push docker image
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  IMAGE_NAME: ${{ vars.DOCKERHUB_USERNAME }}/ubuntu2404-latex
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free Disk Space
+        run: |
+          echo "ディスク容量 (クリーンアップ前):"
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo docker image prune --all --force
+          echo "ディスク容量 (クリーンアップ後):"
+          df -h
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest
+            
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          tags: ${{ steps.meta.outputs.tags }}
+          annotations: ${{ steps.meta.outputs.annotations }}
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
