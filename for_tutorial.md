@@ -11,12 +11,23 @@ To verify the image exists
 docker image ls iharuruki/ubuntu2404-latex
 ```
 
+### Change directory
+Go to the directory where `main.tex` and `build.sh` are located.
+```shell
+cd 
+```
+
 ### `docker container create`
 The `docker container create` (or shorthand: docker create) command creates a new container from the specified image, without starting it.
 ```shell
 # docker container create [OPTIONS] IMAGE [COMMAND] [ARG...]
 docker container create --name ubuntu2404-latex iharuruki/ubuntu2404-latex:latest
+docker container create --name ubuntu2404-latex -v "$(pwd)":/work -w /work iharuruki/ubuntu2404-latex:latest tail -f /dev/null
 ```
+- `-v`: ホストのカレントディレクトリ（`main.tex`, `build.sh` があるディレクトリ）をコンテナ内 `/work` にマウント
+- `-w /work`: コンテナ内の作業ディレクトリを `/work` に設定
+- `tail -f /dev/null`: 何もせず待ち続けるためのダミーコマンド（あとで `docker exec` するため）
+
 ### `docker container ls -a`
 List Docker containers.
 ```shell
