@@ -9,7 +9,7 @@ RUN apt-get update -q && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
 
-# --- locale (日本語PDFや日本語パスを扱う場合に安定) ---
+# locale
 RUN apt-get update && apt-get install -y --no-install-recommends \
     locales \
  && locale-gen ja_JP.UTF-8 \
@@ -30,6 +30,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     make \
     ca-certificates \
  && rm -rf /var/lib/apt/lists/*
+
+# build.sh をイメージにコピーして実行する
+COPY build.sh /usr/local/bin/build.sh
+RUN chmod +x /usr/local/bin/build.sh
 
 # 作業ディレクトリ
 WORKDIR /work
