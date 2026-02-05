@@ -32,8 +32,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
 
 # build.sh をイメージにコピーして実行する
-COPY build.sh /usr/local/bin/build.sh
-RUN chmod +x /usr/local/bin/build.sh
+# COPY build.sh /usr/local/bin/build.sh
+# RUN chmod +x /usr/local/bin/build.sh
 
 # 作業ディレクトリ
 WORKDIR /work
