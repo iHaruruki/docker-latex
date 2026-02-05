@@ -39,3 +39,7 @@ Start a created container.
 ```shell
 docker container start ubuntu2404-latex
 ```
+
+```shell
+docker run --rm -v "${PWD}:/work" -w /work iharuruki/ubuntu2404-latex bash -c "bash ./build.sh"
+```
