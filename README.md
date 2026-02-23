@@ -32,15 +32,19 @@ docker image history ubuntu2404-latex
 ```
 ### Starting the container
 ```shell
-# docker run --name [CONTAINER NAME] -p <ホスト側のポート>:<コンテナ側のポート> --security-out 
 docker container run --name ubuntu2404-latex ubuntu2404-latex:latest
 ```
-> [!NOTE]
-> When getting a Docker image from Docker Hub  
-> Docker HubからDocker imageを取得する場合  
-> `docker container run --name ubuntu2404-ros2 -p 6080:80 --security-opt seccomp=unconfined --shm-size=512m ubuntu2404-latex:latest`
 
 ## 🎮 Usage
+### Start with one line
+**for windows**
+```shell
+docker run --rm -v "${PWD}:/work" -w /work iharuruki/ubuntu2404-latex bash -c "bash ./build.sh"
+```
+**for Linux/macOS**
+```shell
+docker run --rm -v "${pwd}:/work" -w /work iharuruki/ubuntu2404-latex bash -c "bash ./build.sh"
+```
 ### Start a created (stopped) container / 作成済（停止中）のコンテナを起動する
 List Docker containers / Dockerコンテナの一覧を表示
 ```bash

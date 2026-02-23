@@ -12,7 +12,7 @@ docker image ls iharuruki/ubuntu2404-latex
 ```
 
 ### Change directory
-Go to the directory where `main.tex` and `build.sh` are located.
+Go to the directory where `main.tex` and `main.sh` are located.
 ```shell
 cd 
 ```
@@ -23,7 +23,7 @@ The `docker container create` (or shorthand: docker create) command creates a ne
 # docker container create [OPTIONS] IMAGE [COMMAND] [ARG...]
 docker container create --name ubuntu2404-latex -v "${PWD}:/work" -w /work ubuntu2404-latex:latest tail -f /dev/null
 ```
-- `-v`: ホストのカレントディレクトリ（`main.tex`, `build.sh` があるディレクトリ）をコンテナ内 `/work` にマウント
+- `-v`: ホストのカレントディレクトリ（`main.tex`, `main.sh` があるディレクトリ）をコンテナ内 `/work` にマウント
 - `-w /work`: コンテナ内の作業ディレクトリを `/work` に設定
 - `tail -f /dev/null`: 何もせず待ち続けるためのダミーコマンド（あとで `docker exec` するため）
 
@@ -41,5 +41,5 @@ docker container start ubuntu2404-latex
 ```
 
 ```shell
-docker run --rm -v "${PWD}:/work" -w /work iharuruki/ubuntu2404-latex bash -c "bash ./build.sh"
+docker run --rm -v "${PWD}:/work" -w /work iharuruki/ubuntu2404-latex bash -c "bash ./main.sh"
 ```
