@@ -39,11 +39,11 @@ docker container run --name ubuntu2404-latex ubuntu2404-latex:latest
 ### Start with one line
 **for windows**
 ```shell
-docker run --rm -v "${PWD}:/work" -w /work iharuruki/ubuntu2404-latex bash -c "bash ./build.sh"
+docker run --rm -v "${PWD}:/work" -w /work iharuruki/ubuntu2404-latex bash -c "bash ./main.sh"
 ```
 **for Linux/macOS**
 ```shell
-docker run --rm -v "${pwd}:/work" -w /work iharuruki/ubuntu2404-latex bash -c "bash ./build.sh"
+docker run --rm -v "${pwd}:/work" -w /work iharuruki/ubuntu2404-latex bash -c "bash ./main.sh"
 ```
 ### Start a created (stopped) container / 作成済（停止中）のコンテナを起動する
 List Docker containers / Dockerコンテナの一覧を表示
