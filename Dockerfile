@@ -20,7 +20,8 @@ ENV LANG=ja_JP.UTF-8
 ENV LC_ALL=ja_JP.UTF-8
 
 # Install LaTex packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     texlive-lang-japanese \
     texlive-latex-extra \
     texlive-fonts-recommended \
@@ -31,6 +32,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     poppler-utils \
     make \
     ca-certificates \
+    fonts-ipafont \
+    fonts-ipaexfont \
  && rm -rf /var/lib/apt/lists/*
 
 # build.sh をイメージにコピーして実行する

@@ -15,6 +15,9 @@ fi
 
 ## generate a pdf file ###############
 function gen_pdf () {
+	# フォントマップをIPAexに固定（Docker環境で有効）
+    kanji-config-updmap-sys ipaex
+
 	# build latex
 	platex $2.tex
 	bibtex $2.aux
@@ -38,6 +41,9 @@ function gen_pdf () {
 	rm $2.dvi
 	rm $2.out
 	rm $2.log
+	rm $2.toc
+	rm $2.aux
+	rm $2.ps
 }
 
 ## generate pdf files ###############
