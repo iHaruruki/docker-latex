@@ -26,6 +26,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-fonts-recommended \
     texlive-pictures \
     ghostscript \
+    poppler-data \ 
+    cmap-adobe-japan1 \
+    gsfonts \
     poppler-utils \
     make \
     ca-certificates \
