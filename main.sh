@@ -22,6 +22,7 @@ function gen_pdf () {
 	platex $2.tex
 	bibtex $2.aux
 	platex $2.tex
+	platex $2.tex
 	%dvipdfmx main.dvi
 
 	# embed fonts

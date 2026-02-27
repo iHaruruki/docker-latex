@@ -34,6 +34,7 @@ RUN apt-get update && \
     ca-certificates \
     fonts-ipafont \
     fonts-ipaexfont \
+    fonts-noto-cjk \
  && rm -rf /var/lib/apt/lists/*
 
 # build.sh をイメージにコピーして実行する
