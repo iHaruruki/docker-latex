@@ -6,6 +6,7 @@ on:
 
 env:
   IMAGE_NAME: ${{ vars.DOCKERHUB_USERNAME }}/ubuntu2404-latex
+  SLIM_IMAGE_NAME: ${{ vars.DOCKERHUB_USERNAME }}/ubuntu2404-latex-slim
 
 jobs:
   docker:
@@ -48,3 +49,38 @@ jobs:
           push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Build slim image metadata
+        id: slim-meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.SLIM_IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest
+
+      - name: Install docker-slim
+        run: |
+          echo "Installing docker-slim..."
+          curl -sL https://downloads.getslim.ai/docker-slim-latest.tar.gz | tar -xz -C /tmp
+          sudo mv /tmp/dist_linux/docker-slim /usr/local/bin/
+          sudo mv /tmp/dist_linux/docker-slim-sensor /usr/local/bin/
+          docker-slim --version
+
+      - name: Run docker-slim
+        run: |
+          echo "Running docker-slim on ${{ env.IMAGE_NAME }}:latest"
+          docker-slim build \
+            --target ${{ env.IMAGE_NAME }}:latest \
+            --tag ${{ env.SLIM_IMAGE_NAME }}:latest \
+            --http-probe=false \
+            --show-blogs=false
+
+      - name: Push slim image
+        run: |
+          echo "Pushing slim image..."
+          docker push ${{ env.SLIM_IMAGE_NAME }}:latest
+
+      - name: Show image size comparison
+        run: |
+          echo "Image size comparison:"
+          docker images | grep -E "ubuntu2404-latex"
