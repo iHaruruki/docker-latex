@@ -22,15 +22,11 @@ ENV LC_ALL=ja_JP.UTF-8
 # Install LaTex packages
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    texlive-lang-japanese \
-    texlive-latex-extra \
-    texlive-fonts-recommended \
-    texlive-pictures \
+    texlive-full \
     ghostscript \
     poppler-data \
     gsfonts \
     poppler-utils \
-    make \
     ca-certificates \
     fonts-ipafont \
     fonts-ipaexfont \
