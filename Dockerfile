@@ -31,6 +31,7 @@ RUN apt-get update && \
     fonts-ipafont \
     fonts-ipaexfont \
     fonts-noto-cjk \
+    fonts-noto-cjk-extra \
  && rm -rf /var/lib/apt/lists/*
 
 # build.sh をイメージにコピーして実行する

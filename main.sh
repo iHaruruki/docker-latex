@@ -15,8 +15,8 @@ fi
 
 ## generate a pdf file ###############
 function gen_pdf () {
-	# フォントマップをIPAexに固定（Docker環境で有効）
-    kanji-config-updmap-sys ipaex
+	# フォントマップをHaranoAji Extraに固定
+    kanji-config-updmap-sys haranoaji-extra
 
 	# build latex
 	platex $2.tex
