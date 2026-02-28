@@ -16,7 +16,7 @@ fi
 ## generate a pdf file ###############
 function gen_pdf () {
 	# フォントマップをHaranoAji Extraに固定
-    kanji-config-updmap-sys haranoaji-extra
+    #kanji-config-updmap-sys haranoaji-extra
 
 	# build latex
 	platex $2.tex

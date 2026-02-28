@@ -24,14 +24,15 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     texlive-full \
     ghostscript \
+    poppler-utils \
     poppler-data \
     gsfonts \
-    poppler-utils \
     ca-certificates \
     fonts-ipafont \
     fonts-ipaexfont \
     fonts-noto-cjk \
     fonts-noto-cjk-extra \
+    dos2unix \
  && rm -rf /var/lib/apt/lists/*
 
 # build.sh をイメージにコピーして実行する
