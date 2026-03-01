@@ -67,8 +67,8 @@ jobs:
           echo "Downloaded docker-slim:"
           pwd
           ls -l dist_linux/
-          sudo mv dist_linux/slim /usr/local/bin/
-          sudo mv dist_linux/slim-sensor /usr/local/bin/
+          sudo mv /home/runner/work/docker-ubuntu-latex/docker-ubuntu-latex/dist_linux/slim /usr/local/bin/
+          sudo mv /home/runner/work/docker-ubuntu-latex/docker-ubuntu-latex/dist_linux/mint-sensor /usr/local/bin/
           docker-slim --version
 
       - name: Run docker-slim
