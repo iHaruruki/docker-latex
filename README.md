@@ -33,13 +33,14 @@ docker image history docker-latex
 
 ## 🎮 Usage
 ### Start with one line
+The container automatically runs `main.sh` to build the PDF.  
 **for windows**
 ```shell
-docker run --rm -v "${PWD}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
+docker run --rm -v "${PWD}:/work" -w /work iharuruki/docker-latex
 ```
 **for Linux/macOS**
 ```shell
-docker run --rm -v "${pwd}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
+docker run --rm -v "${pwd}:/work" -w /work iharuruki/docker-latex
 ```
 
 ### Start a created (stopped) container / 作成済（停止中）のコンテナを起動する

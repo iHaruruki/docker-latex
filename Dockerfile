@@ -17,5 +17,9 @@ RUN apt-get update && \
 # 作業ディレクトリ
 WORKDIR /work
 
-# コンテナ起動時に bash
-CMD ["bash"]
+# ビルドスクリプトをイメージに組み込む (main.sh must exist in the build context)
+COPY main.sh /usr/local/bin/main.sh
+RUN chmod +x /usr/local/bin/main.sh
+
+# コンテナ起動時にビルドスクリプトを実行する
+CMD ["bash", "/usr/local/bin/main.sh"]
