@@ -50,40 +50,18 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Build slim image metadata
-        id: slim-meta
-        uses: docker/metadata-action@v5
+      - name: Slim Docker image
+        uses: kitabisa/docker-slim-action@v1
+        env:
+          DSLIM_HTTP_PROBE: false
         with:
-          images: ${{ env.SLIM_IMAGE_NAME }}
-          tags: |
-            type=raw,value=latest
-
-      - name: Install docker-slim
-        run: |
-          echo "Installing docker-slim from GitHub..."
-          pwd
-          curl -L -o ds.tar.gz https://github.com/slimtoolkit/slim/releases/download/1.40.11/dist_linux.tar.gz
-          tar -xvf ds.tar.gz
-          echo "Downloaded docker-slim:"
-          pwd
-          ls -l dist_linux/
-          sudo mv /home/runner/work/docker-ubuntu-latex/docker-ubuntu-latex/dist_linux/slim /usr/local/bin/
-          sudo mv /home/runner/work/docker-ubuntu-latex/docker-ubuntu-latex/dist_linux/mint-sensor /usr/local/bin/
-          docker-slim --version
-
-      - name: Run docker-slim
-        run: |
-          echo "Running docker-slim on ${{ env.IMAGE_NAME }}:latest"
-          docker-slim build \
-            --target ${{ env.IMAGE_NAME }}:latest \
-            --tag ${{ env.SLIM_IMAGE_NAME }}:latest \
-            --http-probe=false \
-            --show-blogs=false
+          target: ${{ env.IMAGE_NAME }}:latest
+          tag: slim
 
       - name: Push slim image
         run: |
           echo "Pushing slim image..."
-          docker push ${{ env.SLIM_IMAGE_NAME }}:latest
+          docker push "${{ env.IMAGE_NAME }}:slim"
 
       - name: Show image size comparison
         run: |
