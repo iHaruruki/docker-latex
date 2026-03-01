@@ -5,8 +5,7 @@ on:
     branches: [ "main" ]
 
 env:
-  IMAGE_NAME: ${{ vars.DOCKERHUB_USERNAME }}/ubuntu2404-latex
-  SLIM_IMAGE_NAME: ${{ vars.DOCKERHUB_USERNAME }}/ubuntu2404-latex-slim
+  IMAGE_NAME: ${{ vars.DOCKERHUB_USERNAME }}/docker-latex
 
 jobs:
   docker:
@@ -49,21 +48,3 @@ jobs:
           push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      # Slim it!
-      - uses: kitabisa/docker-slim-action@v1
-        env:
-          DSLIM_HTTP_PROBE: false
-        with:
-          target: ${{ env.IMAGE_NAME }}:latest
-          tag: "slim"
-
-      - name: Push slim image
-        run: |
-          echo "Pushing slim image..."
-          docker push "${{ env.IMAGE_NAME }}:slim"
-
-      - name: Show image size comparison
-        run: |
-          echo "Image size comparison:"
-          docker images | grep -E "ubuntu2404-latex"
