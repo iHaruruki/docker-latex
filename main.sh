@@ -3,6 +3,24 @@ CUR_DIR="$PWD"
 DST_DIR="$PWD/build"
 SRC_NAM="main"
 
+## exit immediately on error ##########
+set -e
+
+## error handler ######################
+function on_error () {
+	echo ""
+	echo "===== BUILD FAILED ====="
+	echo "An error occurred at step: $BASH_COMMAND"
+	if [ -f "$SRC_NAM.log" ]; then
+		echo ""
+		echo "--- LaTeX error log (last 30 lines) ---"
+		tail -n 30 "$SRC_NAM.log"
+		echo "---------------------------------------"
+	fi
+	exit 1
+}
+trap 'on_error' ERR
+
 ## create a build directory ##########
 echo "CUR_DIR=$CUR_DIR"
 echo "DST_DIR=$DST_DIR"
