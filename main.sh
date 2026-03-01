@@ -1,21 +1,3 @@
-## CRLF Countermeasures
-if grep -q $'\r' "$0"; then
-    echo "Notice: CRLF detected. Converting $0 to LF using dos2unix..."
-    
-    # Check if dos2unix is ​​installed
-    if command -v dos2unix >/dev/null 2>&1; then
-
-        dos2unix "$0"
-        echo "Conversion complete. Restarting script..."
-
-        exec bash "$0" "$@"
-    else
-        echo "Error: CRLF detected but 'dos2unix' is not installed."
-        echo "Please run: sudo apt install dos2unix"
-        exit 1
-    fi
-fi
-
 ## set properties ####################
 CUR_DIR="$PWD"
 DST_DIR="$PWD/build"
@@ -39,7 +21,6 @@ function gen_pdf () {
 	bibtex $2.aux
 	platex $2.tex
 	platex $2.tex
-	%dvipdfmx main.dvi
 
 	# embed fonts
 	dvipdfmx -f $2.map $2.dvi

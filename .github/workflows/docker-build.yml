@@ -50,13 +50,13 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Slim Docker image
-        uses: kitabisa/docker-slim-action@v1
+      # Slim it!
+      - uses: kitabisa/docker-slim-action@v1
         env:
           DSLIM_HTTP_PROBE: false
         with:
           target: ${{ env.IMAGE_NAME }}:latest
-          tag: slim
+          tag: "slim"
 
       - name: Push slim image
         run: |
