@@ -1,4 +1,4 @@
-# docker-ubuntu-ros2
+# docker-latex
 ## 🛠️ Setup
 ### Install Docker
 Download `Docker Desktop`  
