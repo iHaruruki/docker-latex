@@ -49,18 +49,14 @@ docker run --rm -it docker-latex:dev bash
 
 ### Debugの方法
 #### 1) コンテナに入って確認する
-**for windows (PowerShell)**
-```shell
-docker run --rm -it -v "${PWD}:/work" -w /work iharuruki/docker-latex bash
-```
-
-**for Linux/macOS**
+**for windows (PowerShell) / Linux/macOS**
 ```shell
 docker run --rm -it -v "${PWD}:/work" -w /work iharuruki/docker-latex bash
 ```
 
 #### 2) main.sh を詳細表示で実行する
 ```shell
+# リポジトリ直下で実行
 bash -x ./main.sh
 ```
 
