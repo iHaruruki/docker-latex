@@ -11,19 +11,19 @@ RUN apt-get update -q && \
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     ghostscript \
-    poppler-utils \
-    texlive-lang-cjk \
-    texlive-fonts-recommended \
-    texlive-fonts-extra \
-    xdvik-ja \
-    gv \
-    nkf \
-    gnuplot \
-    tgif \
     gimp \
+    gnuplot \
+    gv \
     inkscape \
-    mimetex \
     latexdiff \
+    mimetex \
+    nkf \
+    poppler-utils \
+    texlive-fonts-extra \
+    texlive-fonts-recommended \
+    texlive-lang-cjk \
+    tgif \
+    xdvik-ja \
 && rm -rf /var/lib/apt/lists/*
 
 # 作業ディレクトリ
