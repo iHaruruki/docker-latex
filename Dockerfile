@@ -9,7 +9,7 @@ ENV LANG=en_US.utf8
 
 # Install TeX Live with CJK support
 RUN apt-get update -q && apt-get install -qy \
-    texlive-lang-cjk \
+    texlive-lang-japanese \
     texlive-fonts-recommended \
     texlive-fonts-extra \
     && rm -rf /var/lib/apt/lists/*
