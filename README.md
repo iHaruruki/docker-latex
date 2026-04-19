@@ -94,3 +94,10 @@ docker container stop test
 # docker container rm [OPTIONS] CONTAINER [CONTAINER...]
 docker container rm test
 ```
+
+## 📚 References
+- [dockerdocs](https://docs.docker.com/)
+- [docker container run](https://docs.docker.com/reference/cli/docker/container/run/)
+- [docker container start](https://docs.docker.com/reference/cli/docker/container/start/)
+- [docker container stop](https://docs.docker.com/reference/cli/docker/container/stop/)
+- [docker container rm](https://docs.docker.com/reference/cli/docker/container/rm/)
