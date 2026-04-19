@@ -16,14 +16,12 @@ RUN apt-get update && \
     gv \
     inkscape \
     latexdiff \
-    mimetex \
     nkf \
     poppler-utils \
     texlive-fonts-extra \
     texlive-fonts-recommended \
     texlive-lang-cjk \
     tgif \
-    xdvik-ja \
 && rm -rf /var/lib/apt/lists/*
 
 # 作業ディレクトリ
