@@ -23,7 +23,11 @@ function gen_pdf () {
 	platex $2.tex
 
 	# embed fonts
-	dvipdfmx -f $2.map $2.dvi
+	if [ -f $2.map ]; then
+		dvipdfmx -f $2.map $2.dvi
+	else
+		dvipdfmx $2.dvi
+	fi
 	pdffonts $2.pdf
 
 	# compress PDF
@@ -42,7 +46,7 @@ function gen_pdf () {
 	rm $2.log
 	rm $2.toc
 	rm $2.aux
-	rm $2.ps
+	rm -f $2.ps
 }
 
 ## generate pdf files ###############
