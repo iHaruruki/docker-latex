@@ -1,18 +1,13 @@
-FROM texlive/texlive:latest
+FROM ubuntu:24.04
 
-# Upgrade OS
-RUN apt-get update -q && \
-    DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
-    apt-get autoclean && \
-    apt-get autoremove && \
-    rm -rf /var/lib/apt/lists/*
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Install LaTex packages
-RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ghostscript \
-    poppler-utils \
-&& rm -rf /var/lib/apt/lists/*
+# Locales
+RUN apt-get update && apt-get install -y language-pack-ja-base language-pack-ja locales && rm -rf /var/lib/apt/lists/* \
+	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG=en_US.utf8
+
+
 
 # 作業ディレクトリ
 WORKDIR /work
