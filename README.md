@@ -1,5 +1,13 @@
 # docker-latex
 ## 🛠️ Setup
+### Install WSL
+1. Open Powershell in administrator mode. (right-click and select "Open as administrator")
+2. Enter the command.
+```shell
+wsl --install
+```
+3. Restart your computer
+
 ### Install Docker
 Download `Docker Desktop`  
 [Get Started with Docker](https://www.docker.com/get-started/)
@@ -11,9 +19,10 @@ docker --version
 
 ### clone repository
 ```shell
-cd .\Documents\
-git clone https://github.com/iHaruruki/docker-latex.git
+mkdir -p docker_ws && cd docker_ws
+git clone https://github.com/iHaruruki/docker-latex.git # Clone this repository
 ```
+
 ### Build
 ```shell
 cd docker-latex
@@ -21,61 +30,46 @@ cd docker-latex
 To build Docker image from this Dockerfile, run the following command.
 ```shell
 # docker image build [OPTIONS] PATH | URL | -
-docker image build --tag docker-latex .
+docker image build --tag docker-latex:latest .
 ```
 ### To verify the image exists
 ```shell
-docker image ls docker-latex
+docker image ls docker-latex:latest
 ```
 ### Check `docker-latex` history information
 ```shell
-docker image history docker-latex
-```
-
-## 🧑‍💻 Development
-### Dockerfileの作成方法
-1. `Dockerfile` を作成または編集します。
-2. 作成した内容をローカルでビルドして確認します。
-
-```shell
-docker image build --tag docker-latex:dev .
-```
-
-3. コンテナを起動して必要なコマンドが実行できることを確認します。
-
-```shell
-docker run --rm -it docker-latex:dev bash
-```
-
-### デバッグの方法
-以下のコマンドはリポジトリ直下で実行します。
-#### 1) コンテナに入って確認する
-**for windows (PowerShell) / Linux/macOS**
-```shell
-docker run --rm -it -v "${PWD}:/work" -w /work iharuruki/docker-latex bash
-```
-
-#### 2) main.sh を詳細表示で実行する
-```shell
-bash -x ./main.sh
-```
-
-#### 3) 生成ファイルを確認する
-```shell
-ls -la ./build
+docker image history docker-latex:latest
 ```
 
 ## 🎮 Usage
 ### Start with one line
+Execute the following command in the directory where `main.tex` and `main.sh` are located.
 **for windows**
 ```shell
-docker run --rm -v "${PWD}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
+docker container run --rm -v "${PWD}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
 ```
 **for Linux/macOS**
 ```shell
-docker run --rm -v "${pwd}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
+docker container run --rm -v "${pwd}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
 ```
+`main.pdf` & `main_min.pdf` is generated in the **build** folder.
 
+## 📌 Debug
+#### Enter the container and check.
+**for windows (PowerShell) / Linux/macOS**
+```shell
+# docker container run [OPTIONS] IMAGE [COMMAND] [ARG...]
+docker container run --name test -it -v "${PWD}:/work" -w /work docker-latex:latest bash
+```
+### Exit the container
+```bash
+exit
+```
+### Stop container
+```shell
+# docker container stop [OPTIONS] CONTAINER [CONTAINER...]
+docker container stop test
+```
 ### Start a created (stopped) container / 作成済（停止中）のコンテナを起動する
 List Docker containers / Dockerコンテナの一覧を表示
 ```bash
@@ -83,8 +77,8 @@ docker container ls -a
 ```
 Start a created container
 ```shell
-# docker container start [CONTAINER ID]
-docker container start docker-latex
+# docker container start [OPTIONS] CONTAINER [CONTAINER...]
+docker container start test
 ```
 ### Check running containers
 ```bash
@@ -92,11 +86,11 @@ docker container ls
 ```
 ### Stop the container
 ```shell
-# docker container stop [CONTAINER ID]
-docker container stop docker-latex
+# docker container stop [OPTIONS] CONTAINER [CONTAINER...]
+docker container stop test
 ```
 ### Remove the container
 ```shell
-# docker container rm [CONTAINER ID]
-docker container rm docker-latex
+# docker container rm [OPTIONS] CONTAINER [CONTAINER...]
+docker container rm test
 ```
