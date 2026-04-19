@@ -41,6 +41,31 @@ docker image ls docker-latex:latest
 docker image history docker-latex:latest
 ```
 
+### When using Docker Hub
+Push the built Docker image to Docker Hub.
+1. Login Docker Hub
+```shell
+docker login
+```
+2. Tag docker images
+```shell
+# docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+docker tag docker-latex:latest iharuruki/docker-latex:latest
+```
+3. Push your image to Docker Hub
+```shell
+# docker image push [OPTIONS] NAME[:TAG]
+docker image push iharuruki/docker-latex:latest
+```
+4. Sign in to Docker Desktop.  
+[A verified Docker account](https://app.docker.com/signup)
+
+5. Select the Images view.
+
+6. Select the Hub repositories tab.
+
+7. A list of your Docker Hub repositories appears.
+
 ## 🎮 Usage
 ### Start with one line
 Execute the following command in the directory where `main.tex` and `main.sh` are located.
@@ -97,7 +122,9 @@ docker container rm test
 
 ## 📚 References
 - [dockerdocs](https://docs.docker.com/)
+- [Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
 - [docker container run](https://docs.docker.com/reference/cli/docker/container/run/)
 - [docker container start](https://docs.docker.com/reference/cli/docker/container/start/)
 - [docker container stop](https://docs.docker.com/reference/cli/docker/container/stop/)
 - [docker container rm](https://docs.docker.com/reference/cli/docker/container/rm/)
+- [Docker Hub quickstart](https://docs.docker.com/docker-hub/quickstart)
