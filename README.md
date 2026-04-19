@@ -51,7 +51,7 @@ docker run --rm -it docker-latex:dev bash
 #### 1) コンテナに入って確認する
 **for windows (PowerShell)**
 ```shell
-docker run --rm -it -v "${pwd}:/work" -w /work iharuruki/docker-latex bash
+docker run --rm -it -v "${PWD}:/work" -w /work iharuruki/docker-latex bash
 ```
 
 **for Linux/macOS**
