@@ -8,6 +8,7 @@ Download `Docker Desktop`
 ```shell
 docker --version
 ```
+
 ### clone repository
 ```shell
 cd .\Documents\
@@ -29,6 +30,37 @@ docker image ls docker-latex
 ### Check `docker-latex` history information
 ```shell
 docker image history docker-latex
+```
+
+## 🧑‍💻 Development
+### Dockerfileの作成方法
+1. `Dockerfile` を作成または編集します。
+2. 作成した内容をローカルでビルドして確認します。
+
+```shell
+docker image build --tag docker-latex:dev .
+```
+
+3. コンテナを起動して必要なコマンドが実行できることを確認します。
+
+```shell
+docker run --rm -it docker-latex:dev bash
+```
+
+### Debugの方法
+#### 1) コンテナに入って確認する
+```shell
+docker run --rm -it -v "${PWD}:/work" -w /work iharuruki/docker-latex bash
+```
+
+#### 2) main.sh を詳細表示で実行する
+```shell
+bash -x ./main.sh
+```
+
+#### 3) 生成ファイルを確認する
+```shell
+ls -la ./build
 ```
 
 ## 🎮 Usage
