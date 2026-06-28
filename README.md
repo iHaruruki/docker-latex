@@ -74,11 +74,11 @@ docker image push iharuruki/docker-latex:latest
 Execute the following command in the directory where `main.tex` and `main.sh` are located.
 **for windows**
 ```shell
-docker container run --rm -v "${PWD}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
+docker run --rm -v "${PWD}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
 ```
 **for Linux/macOS**
 ```shell
-docker container run --rm -v "${pwd}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
+docker run --rm -v "${pwd}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
 ```
 `main.pdf` & `main_min.pdf` is generated in the **build** folder.
 
