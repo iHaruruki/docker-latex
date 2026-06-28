@@ -71,7 +71,7 @@ docker image push iharuruki/docker-latex:latest
 
 ## 🎮 Usage
 ### Start with one line
-Execute the following command in the directory where `main.tex` and `main.sh` are located.
+Execute the following command in the directory where `main.tex` and `main.sh` are located.<br>
 **for windows**
 ```shell
 docker run --rm -v "${PWD}:/work" -w /work iharuruki/docker-latex bash -c "bash ./main.sh"
