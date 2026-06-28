@@ -84,7 +84,7 @@ docker run --rm -v "${pwd}:/work" -w /work iharuruki/docker-latex bash -c "bash 
 
 > [!NOTE]
 > If you have not downloaded `main.sh`, please download it here.  
-> ![main.sh](main.sh)
+> [main.sh](main.sh)
 
 ## 📌 Debug
 #### Enter the container and check.
