@@ -82,6 +82,10 @@ docker run --rm -v "${pwd}:/work" -w /work iharuruki/docker-latex bash -c "bash 
 ```
 `main.pdf` & `main_min.pdf` is generated in the **build** folder.
 
+> [!NOTE]
+> If you have not downloaded `main.sh`, please download it here.  
+> ![main.sh](main.sh)
+
 ## 📌 Debug
 #### Enter the container and check.
 **for windows (PowerShell) / Linux/macOS**
