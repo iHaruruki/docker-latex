@@ -28,6 +28,7 @@ RUN apt-get update -q && apt-get install -qy \
     inkscape \
     mimetex \
     latexdiff \
+    poppler-utils \
     && rm -rf /var/lib/apt/lists/*
 
 # Working directory
