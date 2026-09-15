@@ -15,18 +15,17 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends \
     texlive-lang-cjk \
     texlive-fonts-recommended \
     texlive-fonts-extra \
+    texlive-publishers \
     && rm -rf /var/lib/apt/lists/*
 
 # Install related packages
 RUN apt-get update -q && apt-get install -qy \
-    xdvik-ja \
     gv \
     nkf \
     gnuplot \
     tgif \
     gimp \
     inkscape \
-    mimetex \
     latexdiff \
     poppler-utils \
     && rm -rf /var/lib/apt/lists/*
