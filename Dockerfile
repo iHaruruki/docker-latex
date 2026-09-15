@@ -16,6 +16,7 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends \
     texlive-fonts-recommended \
     texlive-fonts-extra \
     texlive-publishers \
+    texlive-science \
     && rm -rf /var/lib/apt/lists/*
 
 # Install related packages
@@ -28,6 +29,13 @@ RUN apt-get update -q && apt-get install -qy \
     inkscape \
     latexdiff \
     poppler-utils \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install fonts
+RUN apt-get update -q && apt-get install -qy \
+    fonts-ipafont \
+    fonts-ipaexfont \
+    fonts-noto-cjk \
     && rm -rf /var/lib/apt/lists/*
 
 # Working directory
